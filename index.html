@@ -1,51 +1,91 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>2025 대학생 인턴십 채용설명회</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HD현대중공업 채용설명회</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    :root {
+      --green-light: #00E600;
+      --green: #00AD1D;
+      --green-dark: #008233;
+      --blue: #003087;
+      --blue-dark: #002554;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background-color: #f9fcff;
+      color: var(--blue-dark);
+      padding: 1.5rem;
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
       text-align: center;
-      background-color: #f4f4f4;
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: var(--blue);
+      line-height: 1.5;
     }
-    header {
-      background-color: #0077cc;
+
+    .poster {
+      width: 100%;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: var(--green-dark);
       color: white;
-      padding: 2rem;
-    }
-    main {
-      padding: 2rem;
-    }
-    button {
-      background-color: #0077cc;
-      color: white;
-      border: none;
       padding: 1rem 2rem;
-      font-size: 1.2rem;
-      border-radius: 5px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 999px;
       cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      text-align: center;
+      text-decoration: none;
+      width: 100%;
+      max-width: 360px;
     }
-    button:hover {
-      background-color: #005fa3;
+
+    .button:hover {
+      background-color: var(--green);
+      transform: translateY(-2px);
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>2025 대학생 인턴십 채용설명회</h1>
-    <p>직무 추천도 받고, 직접 물어볼 기회까지!</p>
-  </header>
-  <main>
-    <h2>설명회 정보</h2>
-    <p>📅 날짜: 2025년 7월 10일 (수)<br>
-       🕒 시간: 오후 2시 ~ 5시<br>
-       📍 장소: 경북대학교 글로벌플라자 경하홀</p>
-    <br>
-    <button onclick="location.href='balance.html'">밸런스 게임 시작하기</button>
-  </main>
+  <div class="container">
+    <img src="logo.png" alt="HD현대중공업 로고" class="logo" />
+    <h1>
+      현중대학교 X HD현대중공업<br />
+      채용연계형 인턴십 설명회
+    </h1>
+    <img src="poster.png" alt="채용설명회 포스터" class="poster" />
+    <a href="balance.html" class="button">직무 추천받기 →</a>
+  </div>
 </body>
 </html>
