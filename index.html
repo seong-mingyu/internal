@@ -27,6 +27,7 @@
       font-family: 'HDHyundai-Light', sans-serif;
       background-color: #f9f9f9;
       color: #333;
+      padding-top: 0; /* 상단바 공백 제거 */
     }
 
     /* 상단바 */
@@ -197,6 +198,14 @@
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       flex-shrink: 0;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s;
+    }
+
+    .news-item:hover {
+      transform: translateY(-4px);
     }
 
     .news-item img {
@@ -248,7 +257,7 @@
     <div class="header-content">
       <img src="assets/images/logo.png" alt="HD현대중공업 로고" class="logo">
       <div class="header-text">
-        X <span class="highlight-green">"현중대학교"</span> <span class="highlight-blue">인턴십 채용설명회</span>
+        X <span class="highlight-green">현중대학교</span> <span class="highlight-blue">인턴십 채용설명회</span>
       </div>
     </div>
   </header>
@@ -273,27 +282,41 @@
     <div class="news-section">
       <h2>HD현대중공업 소식 알고가기!</h2>
       <div class="news-slider">
-        <div class="news-item">
+        <a href="https://www.yna.co.kr/view/AKR20250529116200057" target="_blank" class="news-item">
           <img src="assets/images/news1.jpg" alt="뉴스 이미지1">
           <div class="content">
-            <h3>K해양방산기술, 세계를 매료시키다</h3>
-            <p>K해양방산기술의 혁신적인 기술력과 글로벌 시장 공략 전략!</p>
+            <h3>HD현대중공업, 함정 분야 첫 방산원가관리체계 인증 획득</h3>
+            <p>함정 분야 방산원가관리체계 인증, 경쟁력 강화!</p>
           </div>
-        </div>
-        <div class="news-item">
+        </a>
+        <a href="https://magazine.hankyung.com/business/article/202505306792b" target="_blank" class="news-item">
           <img src="assets/images/news2.jpg" alt="뉴스 이미지2">
           <div class="content">
-            <h3>HCX-25, 미래 해상 전장의 게임 체인저</h3>
-            <p>최신 함정 컨셉트와 전투 시스템을 만나보세요!</p>
+            <h3>HD현대, 글로벌 방산협력체계 구축</h3>
+            <p>포르투갈 해군·레오나르도·탈레스·포스코 등과 협력.</p>
           </div>
-        </div>
-        <div class="news-item">
+        </a>
+        <a href="https://www.ferrotimes.com/news/articleView.html?idxno=41406" target="_blank" class="news-item">
           <img src="assets/images/news3.jpg" alt="뉴스 이미지3">
           <div class="content">
-            <h3>스마트 조선소로의 도약</h3>
-            <p>HD현대중공업의 스마트 팩토리 혁신 이야기.</p>
+            <h3>포스코-HD현대중공업, 신소재 개발 협력</h3>
+            <p>MADEX 2025서 첨단 함정 신소재 개발 맞손.</p>
           </div>
-        </div>
+        </a>
+        <a href="https://www.hankyung.com/article/2025042549026" target="_blank" class="news-item">
+          <img src="assets/images/news4.jpg" alt="뉴스 이미지4">
+          <div class="content">
+            <h3>HD현대중공업, '깜짝 실적'에 목표가 ↑</h3>
+            <p>고평가 부담 극복, 실적 상승세 지속.</p>
+          </div>
+        </a>
+        <a href="https://www.g-enews.com/article/Global-Biz/2025/05/202505270629029696fbbec65dfb_1" target="_blank" class="news-item">
+          <img src="assets/images/news5.jpg" alt="뉴스 이미지5">
+          <div class="content">
+            <h3>HD현대중공업, LNG운반선 17척 건조 시작</h3>
+            <p>카타르에너지 선단 확충을 위한 프로젝트.</p>
+          </div>
+        </a>
       </div>
     </div>
   </div>
