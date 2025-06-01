@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HD현대중공업 채용설명회</title>
   <style>
     /* 폰트 적용 */
@@ -47,13 +47,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px; /* 기존 16px → 6px로 줄임 */
+      gap: 6px;
     }
 
     .logo {
       width: 120px;
       height: auto;
-      margin-right: -4px; /* 오른쪽 간격 미세 조정 */
+      margin-right: -4px;
     }
 
     .header-text {
@@ -72,10 +72,10 @@
       font-weight: bold;
     }
 
-    /* 본문 컨테이너 */
+    /* 컨테이너 */
     .container {
       max-width: 600px;
-      margin: 140px auto 0;  /* 헤더 높이 고려 */
+      margin: 120px auto 0;
       padding: 20px;
       text-align: center;
     }
@@ -86,17 +86,11 @@
       height: auto;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
     }
 
-    /* 버튼 그룹 */
-    .button-group {
-      margin-top: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .button {
+    /* 사전 신청 버튼 */
+    .apply-button {
       display: block;
       width: 100%;
       padding: 14px 0;
@@ -104,27 +98,97 @@
       font-weight: bold;
       text-decoration: none;
       border-radius: 8px;
-      transition: background-color 0.3s;
+      background-color: #003087;
+      color: #fff;
       font-family: 'HDHyundai-Medium', sans-serif;
+      margin-bottom: 20px;
+      transition: background-color 0.3s;
     }
 
-    /* 버튼 색상 */
-    .button:nth-child(1) {
+    .apply-button:hover {
+      background-color: #002554;
+    }
+
+    /* 밸런스 게임 카드 */
+    .balance-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .balance-card h2 {
+      font-family: 'HDHyundai-Bold', sans-serif;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .balance-card p {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .balance-card .balance-button {
+      display: inline-block;
+      padding: 10px 20px;
       background-color: #00AD1D;
       color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'HDHyundai-Medium', sans-serif;
+      transition: background-color 0.3s;
     }
 
-    .button:nth-child(1):hover {
+    .balance-card .balance-button:hover {
       background-color: #008233;
     }
 
-    .button:nth-child(2) {
-      background-color: #003087;
-      color: #fff;
+    /* AI 아이콘 */
+    .ai-icon {
+      font-size: 40px;
+      color: #00AD1D;
+      margin-bottom: 10px;
     }
 
-    .button:nth-child(2):hover {
-      background-color: #002554;
+    /* 뉴스 슬라이드 */
+    .news-section {
+      margin-top: 40px;
+    }
+
+    .news-section h2 {
+      font-family: 'HDHyundai-Bold', sans-serif;
+      font-size: 18px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .news-slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding-bottom: 10px;
+    }
+
+    .news-item {
+      min-width: 200px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      flex-shrink: 0;
+    }
+
+    .news-item h3 {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .news-item p {
+      font-size: 12px;
+      color: #666;
     }
 
     /* 반응형 대응 */
@@ -139,12 +203,14 @@
       .header-text {
         font-size: 18px;
       }
-      .button {
+      .apply-button, .balance-card .balance-button {
         font-size: 14px;
         padding: 12px 0;
       }
     }
   </style>
+  <!-- 아이콘 폰트 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body>
   <!-- 상단바 -->
@@ -159,13 +225,38 @@
 
   <!-- 본문 -->
   <div class="container">
+    <!-- 사전 신청 버튼 -->
+    <a href="https://forms.gle/your-google-form-link" class="apply-button">사전 신청하기</a>
+
     <!-- 포스터 -->
     <img src="assets/images/poster.jpg" alt="채용설명회 포스터" class="poster">
 
-    <!-- 버튼 -->
-    <div class="button-group">
-      <a href="balance.html" class="button">나에게 맞는 직무 찾기</a>
-      <a href="apply.html" class="button">채용설명회 사전 신청</a>
+    <!-- 밸런스 게임 카드 -->
+    <div class="balance-card">
+      <div class="ai-icon"><i class="fas fa-robot"></i></div>
+      <h2>나에게 맞는 직무가 궁금하다면?</h2>
+      <p>10문항의 밸런스 게임을 통해 AI가 추천하는 직무를 미리 알아보세요!</p>
+      <a href="balance.html" class="balance-button">직무 추천 받기</a>
+    </div>
+
+    <!-- 뉴스 슬라이드 -->
+    <div class="news-section">
+      <h2>미리 알고 가면 좋은 회사 소식</h2>
+      <div class="news-slider">
+        <div class="news-item">
+          <h3>조선업계 친환경 선박 개발 동향</h3>
+          <p>0월 0일</p>
+        </div>
+        <div class="news-item">
+          <h3>HD현대중공업, 새로운 프로젝트 발표</h3>
+          <p>0월 0일</p>
+        </div>
+        <div class="news-item">
+          <h3>조선업계 인재 채용 트렌드</h3>
+          <p>0월 0일</p>
+        </div>
+        <!-- 추가 뉴스 항목 -->
+      </div>
     </div>
   </div>
 </body>
