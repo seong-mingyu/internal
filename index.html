@@ -43,7 +43,7 @@
     .header-content {
       max-width: 600px;
       margin: 0 auto;
-      padding: 10px 20px;
+      padding: 8px 20px;  /* 상단 여백 줄임 */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -75,7 +75,7 @@
     /* 컨테이너 */
     .container {
       max-width: 600px;
-      margin: 140px auto 0;
+      margin: 120px auto 0;
       padding: 20px;
     }
 
@@ -92,7 +92,7 @@
 
     .balance-card .ai-icon {
       font-size: 50px;
-      color: #003087; /* 파란 계열 */
+      color: #003087;
       margin-bottom: 10px;
       animation: pulse 2s infinite;
     }
@@ -101,6 +101,11 @@
       font-family: 'HDHyundai-Bold', sans-serif;
       font-size: 20px;
       margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .balance-card h2 br {
+      display: block;
     }
 
     .balance-card p {
@@ -125,13 +130,11 @@
       background-color: #002554;
     }
 
-    /* fadeIn 애니메이션 */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* pulse 애니메이션 */
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.1); }
@@ -168,7 +171,7 @@
       background-color: #008233;
     }
 
-    /* 뉴스 슬라이드 */
+    /* 뉴스 섹션 */
     .news-section {
       margin-top: 40px;
     }
@@ -176,37 +179,49 @@
     .news-section h2 {
       font-family: 'HDHyundai-Bold', sans-serif;
       font-size: 18px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       text-align: left;
     }
 
     .news-slider {
       display: flex;
       overflow-x: auto;
-      gap: 10px;
+      gap: 16px;
       padding-bottom: 10px;
     }
 
     .news-item {
-      min-width: 200px;
+      min-width: 220px;
       background-color: #ffffff;
-      border-radius: 8px;
-      padding: 15px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       flex-shrink: 0;
+    }
+
+    .news-item img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+    }
+
+    .news-item .content {
+      padding: 12px;
     }
 
     .news-item h3 {
       font-size: 14px;
-      margin-bottom: 5px;
+      font-family: 'HDHyundai-Bold', sans-serif;
+      margin-bottom: 8px;
+      line-height: 1.4;
     }
 
     .news-item p {
       font-size: 12px;
       color: #666;
+      line-height: 1.6;
     }
 
-    /* 반응형 대응 */
     @media (max-width: 400px) {
       .header-content {
         gap: 4px;
@@ -243,8 +258,8 @@
     <!-- 직무 추천 카드 -->
     <div class="balance-card">
       <div class="ai-icon"><i class="fas fa-robot"></i></div>
-      <h2>채용설명회 전에 미리 직무 추천 받기</h2>
-      <p>10문항의 밸런스 게임을 통해 AI가 추천하는 직무를 미리 알아보고, 해당 직무의 현직자에게 궁금한 점을 미리 질문해보세요!</p>
+      <h2>AI가 제안하는<br>당신에게 딱 맞는 직무 추천!</h2>
+      <p>10문항의 밸런스 게임으로<br>AI가 추천하는 직무를 먼저 알아보고,<br>현직자에게 미리 질문까지 할 수 있어요!</p>
       <a href="balance.html" class="balance-button">Intern AI →</a>
     </div>
 
@@ -254,23 +269,32 @@
     <!-- 사전 신청 버튼 -->
     <a href="https://forms.gle/your-google-form-link" class="apply-button">사전 신청하기</a>
 
-    <!-- 뉴스 슬라이드 -->
+    <!-- 뉴스 섹션 -->
     <div class="news-section">
-      <h2>미리 알고 가면 좋은 회사 소식</h2>
+      <h2>HD현대중공업 소식 알고가기!</h2>
       <div class="news-slider">
         <div class="news-item">
-          <h3>조선업계 친환경 선박 개발 동향</h3>
-          <p>0월 0일</p>
+          <img src="assets/images/news1.jpg" alt="뉴스 이미지1">
+          <div class="content">
+            <h3>K해양방산기술, 세계를 매료시키다</h3>
+            <p>K해양방산기술의 혁신적인 기술력과 글로벌 시장 공략 전략!</p>
+          </div>
         </div>
         <div class="news-item">
-          <h3>HD현대중공업, 새로운 프로젝트 발표</h3>
-          <p>0월 0일</p>
+          <img src="assets/images/news2.jpg" alt="뉴스 이미지2">
+          <div class="content">
+            <h3>HCX-25, 미래 해상 전장의 게임 체인저</h3>
+            <p>최신 함정 컨셉트와 전투 시스템을 만나보세요!</p>
+          </div>
         </div>
         <div class="news-item">
-          <h3>조선업계 인재 채용 트렌드</h3>
-          <p>0월 0일</p>
+          <img src="assets/images/news3.jpg" alt="뉴스 이미지3">
+          <div class="content">
+            <h3>스마트 조선소로의 도약</h3>
+            <p>HD현대중공업의 스마트 팩토리 혁신 이야기.</p>
+          </div>
         </div>
-        <!-- 추가 뉴스 항목 -->
+        <!-- 추가 뉴스 카드 -->
       </div>
     </div>
   </div>
