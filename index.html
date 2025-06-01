@@ -29,17 +29,46 @@
       color: #333;
     }
 
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
+    /* 상단바 */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      z-index: 1000;
     }
 
-    /* 로고 */
+    .header-content {
+      max-width: 600px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .logo {
-      width: 160px;
-      margin: 0 auto 20px;
+      width: 40px;
+      height: auto;
+    }
+
+    .header-text {
+      font-family: 'HDHyundai-Bold', sans-serif;
+      font-size: 18px;
+      color: #003087;
+    }
+
+    /* 본문 컨테이너 */
+    .container {
+      max-width: 600px;
+      margin: 80px auto 0;  /* 헤더 높이 고려 */
+      padding: 20px;
+      text-align: center;
     }
 
     /* 포스터 */
@@ -91,22 +120,30 @@
 
     /* 반응형 대응 */
     @media (max-width: 400px) {
+      .header-text {
+        font-size: 16px;
+      }
       .logo {
-        width: 140px;
+        width: 36px;
       }
       .button {
         font-size: 14px;
         padding: 12px 0;
       }
     }
-
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- 로고 -->
-    <img src="assets/images/logo.png" alt="HD현대중공업 로고" class="logo">
+  <!-- 상단바 -->
+  <header class="header">
+    <div class="header-content">
+      <img src="assets/images/logo.png" alt="HD현대중공업 로고" class="logo">
+      <div class="header-text">X 현중대학교 채용설명회</div>
+    </div>
+  </header>
 
+  <!-- 본문 -->
+  <div class="container">
     <!-- 포스터 -->
     <img src="assets/images/poster.jpg" alt="채용설명회 포스터" class="poster">
 
