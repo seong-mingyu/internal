@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HD현대중공업 인턴십 채용설명회</title>
   <style>
-    /* 폰트 적용 */
+    /* 폰트 */
     @font-face {
       font-family: 'HDHyundai-Bold';
       src: url('assets/fonts/HDHyundai-Bold.ttf') format('truetype');
@@ -188,7 +188,8 @@
     }
 
     .news-item {
-      min-width: 220px;
+      min-width: 80%;  /* 모바일에서 기사 1개 반 정도 보이도록 */
+      max-width: 300px;
       background-color: #ffffff;
       border-radius: 12px;
       overflow: hidden;
@@ -226,6 +227,12 @@
       font-size: 12px;
       color: #666;
       line-height: 1.6;
+    }
+
+    @media (min-width: 600px) {
+      .news-item {
+        min-width: 220px;
+      }
     }
 
     @media (max-width: 400px) {
