@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HD현대중공업 채용설명회</title>
+  <title>HD현대중공업 인턴십 채용설명회</title>
   <style>
     /* 폰트 적용 */
     @font-face {
@@ -75,9 +75,67 @@
     /* 컨테이너 */
     .container {
       max-width: 600px;
-      margin: 120px auto 0;
+      margin: 140px auto 0;
       padding: 20px;
+    }
+
+    /* 직무 추천 카드 */
+    .balance-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
       text-align: center;
+      animation: fadeIn 1s;
+    }
+
+    .balance-card .ai-icon {
+      font-size: 50px;
+      color: #003087; /* 파란 계열 */
+      margin-bottom: 10px;
+      animation: pulse 2s infinite;
+    }
+
+    .balance-card h2 {
+      font-family: 'HDHyundai-Bold', sans-serif;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .balance-card p {
+      font-size: 14px;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .balance-card .balance-button {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #003087;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'HDHyundai-Medium', sans-serif;
+      transition: background-color 0.3s;
+    }
+
+    .balance-card .balance-button:hover {
+      background-color: #002554;
+    }
+
+    /* fadeIn 애니메이션 */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* pulse 애니메이션 */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
 
     /* 포스터 */
@@ -98,59 +156,16 @@
       font-weight: bold;
       text-decoration: none;
       border-radius: 8px;
-      background-color: #003087;
+      background-color: #00AD1D;
       color: #fff;
       font-family: 'HDHyundai-Medium', sans-serif;
       margin-bottom: 20px;
+      text-align: center;
       transition: background-color 0.3s;
     }
 
     .apply-button:hover {
-      background-color: #002554;
-    }
-
-    /* 밸런스 게임 카드 */
-    .balance-card {
-      background-color: #ffffff;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      margin-bottom: 20px;
-      text-align: left;
-    }
-
-    .balance-card h2 {
-      font-family: 'HDHyundai-Bold', sans-serif;
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .balance-card p {
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
-
-    .balance-card .balance-button {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #00AD1D;
-      color: #fff;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-family: 'HDHyundai-Medium', sans-serif;
-      transition: background-color 0.3s;
-    }
-
-    .balance-card .balance-button:hover {
       background-color: #008233;
-    }
-
-    /* AI 아이콘 */
-    .ai-icon {
-      font-size: 40px;
-      color: #00AD1D;
-      margin-bottom: 10px;
     }
 
     /* 뉴스 슬라이드 */
@@ -218,26 +233,26 @@
     <div class="header-content">
       <img src="assets/images/logo.png" alt="HD현대중공업 로고" class="logo">
       <div class="header-text">
-        X <span class="highlight-green">현중대학교</span> <span class="highlight-blue">채용설명회</span>
+        X <span class="highlight-green">현중대학교</span> <span class="highlight-blue">인턴십 채용설명회</span>
       </div>
     </div>
   </header>
 
   <!-- 본문 -->
   <div class="container">
-    <!-- 사전 신청 버튼 -->
-    <a href="https://forms.gle/your-google-form-link" class="apply-button">사전 신청하기</a>
-
-    <!-- 포스터 -->
-    <img src="assets/images/poster.jpg" alt="채용설명회 포스터" class="poster">
-
-    <!-- 밸런스 게임 카드 -->
+    <!-- 직무 추천 카드 -->
     <div class="balance-card">
       <div class="ai-icon"><i class="fas fa-robot"></i></div>
-      <h2>나에게 맞는 직무가 궁금하다면?</h2>
-      <p>10문항의 밸런스 게임을 통해 AI가 추천하는 직무를 미리 알아보세요!</p>
-      <a href="balance.html" class="balance-button">직무 추천 받기</a>
+      <h2>채용설명회 전에 미리 직무 추천 받기</h2>
+      <p>10문항의 밸런스 게임을 통해 AI가 추천하는 직무를 미리 알아보고, 해당 직무의 현직자에게 궁금한 점을 미리 질문해보세요!</p>
+      <a href="balance.html" class="balance-button">Intern AI →</a>
     </div>
+
+    <!-- 포스터 -->
+    <img src="assets/images/poster.jpg" alt="인턴십 채용설명회 포스터" class="poster">
+
+    <!-- 사전 신청 버튼 -->
+    <a href="https://forms.gle/your-google-form-link" class="apply-button">사전 신청하기</a>
 
     <!-- 뉴스 슬라이드 -->
     <div class="news-section">
