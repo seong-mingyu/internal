@@ -58,13 +58,23 @@
     .header-text {
       font-family: 'HDHyundai-Bold', sans-serif;
       font-size: 20px;
+      color: #333;
+    }
+
+    .highlight-green {
+      color: #00AD1D;
+      font-weight: bold;
+    }
+
+    .highlight-blue {
       color: #003087;
+      font-weight: bold;
     }
 
     /* 본문 컨테이너 */
     .container {
       max-width: 600px;
-      margin: 100px auto 0;  /* 헤더 높이 고려 */
+      margin: 140px auto 0;  /* 헤더 높이 고려 */
       padding: 20px;
       text-align: center;
     }
@@ -122,7 +132,7 @@
         gap: 10px;
       }
       .logo {
-        width: 50px;
+        width: 100px;
       }
       .header-text {
         font-size: 18px;
@@ -139,7 +149,9 @@
   <header class="header">
     <div class="header-content">
       <img src="assets/images/logo.png" alt="HD현대중공업 로고" class="logo">
-      <div class="header-text">X 현중대학교 채용설명회</div>
+      <div class="header-text">
+        X <span class="highlight-green">현중대학교</span> <span class="highlight-blue">채용설명회</span>
+      </div>
     </div>
   </header>
 
