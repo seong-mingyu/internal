@@ -1,91 +1,120 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HD현대중공업 채용설명회</title>
   <style>
-    :root {
-      --green-light: #00E600;
-      --green: #00AD1D;
-      --green-dark: #008233;
-      --blue: #003087;
-      --blue-dark: #002554;
+    /* 폰트 적용 */
+    @font-face {
+      font-family: 'HDHyundai-Bold';
+      src: url('internal/assets/fonts/HDHyundai-Bold.ttf') format('truetype');
+      font-weight: bold;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    @font-face {
+      font-family: 'HDHyundai-Light';
+      src: url('internal/assets/fonts/HDHyundai-Light.ttf') format('truetype');
+      font-weight: 300;
+    }
+    @font-face {
+      font-family: 'HDHyundai-Medium';
+      src: url('internal/assets/fonts/HDHyundai-Medium.ttf') format('truetype');
+      font-weight: 500;
     }
 
     body {
-      font-family: 'Pretendard', sans-serif;
-      background-color: #f9fcff;
-      color: var(--blue-dark);
-      padding: 1.5rem;
+      margin: 0;
+      font-family: 'HDHyundai-Light', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
     }
 
     .container {
-      max-width: 480px;
+      max-width: 600px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .logo {
-      width: 120px;
-      margin-bottom: 1rem;
-    }
-
-    h1 {
+      padding: 20px;
       text-align: center;
-      font-size: 1.4rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
-      color: var(--blue);
-      line-height: 1.5;
     }
 
+    /* 로고 */
+    .logo {
+      width: 160px;
+      margin: 0 auto 20px;
+    }
+
+    /* 포스터 */
     .poster {
       width: 100%;
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      margin-bottom: 2rem;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* 버튼 그룹 */
+    .button-group {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
     .button {
-      display: inline-block;
-      background-color: var(--green-dark);
-      color: white;
-      padding: 1rem 2rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
-      text-align: center;
-      text-decoration: none;
+      display: block;
       width: 100%;
-      max-width: 360px;
+      padding: 14px 0;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+      font-family: 'HDHyundai-Medium', sans-serif;
     }
 
-    .button:hover {
-      background-color: var(--green);
-      transform: translateY(-2px);
+    /* 버튼 색상 */
+    .button:nth-child(1) {
+      background-color: #00AD1D;
+      color: #fff;
     }
+
+    .button:nth-child(1):hover {
+      background-color: #008233;
+    }
+
+    .button:nth-child(2) {
+      background-color: #003087;
+      color: #fff;
+    }
+
+    .button:nth-child(2):hover {
+      background-color: #002554;
+    }
+
+    /* 반응형 대응 */
+    @media (max-width: 400px) {
+      .logo {
+        width: 140px;
+      }
+      .button {
+        font-size: 14px;
+        padding: 12px 0;
+      }
+    }
+
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="logo.png" alt="HD현대중공업 로고" class="logo" />
-    <h1>
-      현중대학교 X HD현대중공업<br />
-      채용연계형 인턴십 설명회
-    </h1>
-    <img src="poster.jpg" alt="채용설명회 포스터" class="poster" />
-    <a href="balance.html" class="button">직무 추천받기 →</a>
+    <!-- 로고 -->
+    <img src="internal/assets/images/logo.png" alt="HD현대중공업 로고" class="logo">
+
+    <!-- 포스터 -->
+    <img src="internal/assets/images/poster.jpg" alt="채용설명회 포스터" class="poster">
+
+    <!-- 버튼 -->
+    <div class="button-group">
+      <a href="balance-game.html" class="button">나에게 맞는 직무 찾기</a>
+      <a href="apply.html" class="button">채용설명회 사전 신청</a>
+    </div>
   </div>
 </body>
 </html>
