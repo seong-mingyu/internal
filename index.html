@@ -37,36 +37,34 @@
       width: 100%;
       background-color: #ffffff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 20px;
       z-index: 1000;
     }
 
     .header-content {
       max-width: 600px;
-      width: 100%;
+      margin: 0 auto;
+      padding: 10px 20px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      gap: 16px;
     }
 
     .logo {
-      width: 40px;
+      width: 60px;
       height: auto;
     }
 
     .header-text {
       font-family: 'HDHyundai-Bold', sans-serif;
-      font-size: 18px;
+      font-size: 20px;
       color: #003087;
     }
 
     /* 본문 컨테이너 */
     .container {
       max-width: 600px;
-      margin: 80px auto 0;  /* 헤더 높이 고려 */
+      margin: 100px auto 0;  /* 헤더 높이 고려 */
       padding: 20px;
       text-align: center;
     }
@@ -101,30 +99,33 @@
 
     /* 버튼 색상 */
     .button:nth-child(1) {
-      background-color: #00AD1D;  /* 초록 */
+      background-color: #00AD1D;
       color: #fff;
     }
 
     .button:nth-child(1):hover {
-      background-color: #008233;  /* 진한 초록 */
+      background-color: #008233;
     }
 
     .button:nth-child(2) {
-      background-color: #003087;  /* 현대중공업 블루 */
+      background-color: #003087;
       color: #fff;
     }
 
     .button:nth-child(2):hover {
-      background-color: #002554;  /* 더 진한 블루 */
+      background-color: #002554;
     }
 
     /* 반응형 대응 */
     @media (max-width: 400px) {
-      .header-text {
-        font-size: 16px;
+      .header-content {
+        gap: 10px;
       }
       .logo {
-        width: 36px;
+        width: 50px;
+      }
+      .header-text {
+        font-size: 18px;
       }
       .button {
         font-size: 14px;
