@@ -27,7 +27,7 @@
       font-family: 'HDHyundai-Light', sans-serif;
       background-color: #f9f9f9;
       color: #333;
-      padding-top: 0; /* 상단바 공백 제거 */
+      padding-top: 0;
     }
 
     /* 상단바 */
@@ -44,7 +44,7 @@
     .header-content {
       max-width: 600px;
       margin: 0 auto;
-      padding: 4px 20px;  /* 상단 여백 최소화 */
+      padding: 4px 20px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -73,10 +73,9 @@
       font-weight: bold;
     }
 
-    /* 컨테이너 */
     .container {
       max-width: 600px;
-      margin: 100px auto 0;  /* 상단 간격 최소화 */
+      margin: 100px auto 0;
       padding: 20px;
     }
 
@@ -142,7 +141,6 @@
       100% { transform: scale(1); }
     }
 
-    /* 포스터 */
     .poster {
       width: 100%;
       height: auto;
@@ -151,7 +149,6 @@
       margin-bottom: 20px;
     }
 
-    /* 사전 신청 버튼 */
     .apply-button {
       display: block;
       width: 100%;
@@ -172,7 +169,6 @@
       background-color: #008233;
     }
 
-    /* 뉴스 섹션 */
     .news-section {
       margin-top: 40px;
     }
@@ -210,8 +206,9 @@
 
     .news-item img {
       width: 100%;
-      height: 120px;
+      height: 150px;
       object-fit: cover;
+      border-bottom: 1px solid #ddd;
     }
 
     .news-item .content {
@@ -248,11 +245,9 @@
       }
     }
   </style>
-  <!-- 아이콘 폰트 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body>
-  <!-- 상단바 -->
   <header class="header">
     <div class="header-content">
       <img src="assets/images/logo.png" alt="HD현대중공업 로고" class="logo">
@@ -262,9 +257,7 @@
     </div>
   </header>
 
-  <!-- 본문 -->
   <div class="container">
-    <!-- 직무 추천 카드 -->
     <div class="balance-card">
       <div class="ai-icon"><i class="fas fa-robot"></i></div>
       <h2>AI가 제안하는<br>당신에게 딱 맞는 직무 추천!</h2>
@@ -272,13 +265,9 @@
       <a href="balance.html" class="balance-button">Intern AI →</a>
     </div>
 
-    <!-- 포스터 -->
     <img src="assets/images/poster.jpg" alt="인턴십 채용설명회 포스터" class="poster">
-
-    <!-- 사전 신청 버튼 -->
     <a href="https://forms.gle/your-google-form-link" class="apply-button">사전 신청하기</a>
 
-    <!-- 뉴스 섹션 -->
     <div class="news-section">
       <h2>HD현대중공업 소식 알고가기!</h2>
       <div class="news-slider">
