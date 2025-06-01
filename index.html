@@ -47,12 +47,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 6px; /* 기존 16px → 6px로 줄임 */
     }
 
     .logo {
       width: 120px;
       height: auto;
+      margin-right: -4px; /* 오른쪽 간격 미세 조정 */
     }
 
     .header-text {
@@ -129,10 +130,11 @@
     /* 반응형 대응 */
     @media (max-width: 400px) {
       .header-content {
-        gap: 10px;
+        gap: 4px;
       }
       .logo {
         width: 100px;
+        margin-right: -2px;
       }
       .header-text {
         font-size: 18px;
@@ -150,7 +152,7 @@
     <div class="header-content">
       <img src="assets/images/logo.png" alt="HD현대중공업 로고" class="logo">
       <div class="header-text">
-        X <span class="highlight-green"> 현중대학교</span> <span class="highlight-blue">채용설명회</span>
+        X <span class="highlight-green">현중대학교</span> <span class="highlight-blue">채용설명회</span>
       </div>
     </div>
   </header>
