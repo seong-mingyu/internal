@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Intern Al - H-int</title>
+  <link rel="icon" href="assets/images/logo.png" type="image/png"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    @font-face {
+      font-family: 'HDHyundaiLight';
+      src: url('assets/fonts/HDHyundai-Light.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'HDHyundaiBold';
+      src: url('assets/fonts/HDHyundai-Bold.ttf') format('truetype');
+    }
+    :root {
+      --discovery-blue: #003087;
+      --prosperity-green: #008233;
+      --trust-blue: #002554;
+      --gray-text: #63666A;
+      --bg-light: #f4f4f4;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'HDHyundaiLight', sans-serif;
+      background: var(--bg-light);
+      color: var(--gray-text);
+      opacity: 0;
+      transition: opacity .6s;
+    }
+    body.loaded {
+      opacity: 1;
+    }
+
+    /* Splash */
+    #splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeSplash .8s ease forwards;
+    }
+    #splash img {
+      width: 60px;
+      margin-bottom: 1rem;
+    }
+    .splash-text {
+      font-family: 'HDHyundaiBold';
+      font-size: 1.5rem;
+      color: var(--discovery-blue);
+    }
+    @keyframes fadeSplash {
+      0% {opacity: 1;}
+      99% {opacity: 0;}
+      100% {display: none;}
+    }
+
+    /* 상단바 */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    .header-content {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 4px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .logo {
+      width: 120px;
+      height: auto;
+      margin-right: -4px;
+    }
+    .header-text {
+      font-family: 'HDHyundai-Bold', sans-serif;
+      font-size: 20px;
+      color: #333;
+    }
+    .highlight-green {
+      color: #00AD1D;
+      font-weight: bold;
+    }
+    .highlight-blue {
+      color: #003087;
+      font-weight: bold;
+    }
+
+    /* 페이지 인트로 */
+    .al-intro {
+      padding: 6rem 1rem 3rem; /* 상단바 높이 + 여유 */
+      text-align: center;
+    }
+    .al-intro .page-title {
+      font-family: 'HDHyundaiBold';
+      font-size: 2rem;
+      background: linear-gradient(90deg,#00B3FF,#9932CC);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: .5rem;
+    }
+    .al-intro .subtitle, .al-intro .tagline {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* 버튼 */
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-family: 'HDHyundaiBold';
+      font-size: 1.1rem;
+      color: #fff;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .btn.primary {
+      background: var(--discovery-blue);
+    }
+    .btn.secondary {
+      background: var(--prosperity-green);
+    }
+
+    /* 모달 */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 10000;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      background: #fff;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 480px;
+      max-height: 120vh;
+      padding: 2rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+      animation: fadeInDown .4s ease-out;
+    }
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .modal-header .title {
+      font-family: 'HDHyundaiBold';
+      font-size: 1.8rem;
+      background: linear-gradient(90deg,#00B3FF,#9932CC);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .close-modal {
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--gray-text);
+      cursor: pointer;
+    }
+
+    /* 모바일 튜닝 */
+    @media (max-width: 480px) {
+      .modal-content {
+        padding: 1rem;
+      }
+      .btn {
+        font-size: .95rem;
+        padding: .75rem 1.25rem;
+      }
+      .al-intro .page-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="splash">
+    <img src="assets/images/logo.png" alt="로고"/>
+    <div class="splash-text">H-int Dream</div>
+  </div>
+
+  <header class="header">
+    <div class="header-content">
+      <img src="assets/images/logo.png" alt="HD현대중공업 로고" class="logo">
+      <div class="header-text">
+        X <span class="highlight-green">현중대학교</span> <span class="highlight-blue">인턴십 채용설명회</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="al-intro" data-aos="fade-up">
+    <div class="page-title">Intern Al</div>
+    <div class="subtitle">내면의 성향, AI의 인턴십 직무 추천</div>
+    <div class="tagline">10문항의 밸런스 게임을 통해 HD현대중공업 직무 추천받기!</div>
+    <button id="startBtn" class="btn primary">테스트 시작하기</button>
+  </div>
+
+  <!-- 모달 -->
+  <div id="alModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="title">Intern Al</div>
+        <button class="close-modal" onclick="closeModal()">×</button>
+      </div>
+      <div id="stepQuestion" class="step active">
+        <div class="question-card">
+          <div class="question-header">
+            <div class="question-number">1/10</div>
+            <div class="progress">
+              <div id="progressBar" class="progress-bar"></div>
+            </div>
+          </div>
+          <p id="questionText" class="question-text"></p>
+          <div class="question-options">
+            <div id="ans1Btn" class="option-btn"></div>
+            <div class="vs-label">VS</div>
+            <div id="ans2Btn" class="option-btn"></div>
+          </div>
+        </div>
+      </div>
+      <div id="stepAnalysis" class="step">
+        <div class="loading-indicator"></div>
+      </div>
+      <div id="stepResult" class="step">
+        <div id="resultCard" class="result-card"></div>
+        <p class="result-desc"></p>
+        <div class="result-buttons">
+          <button class="btn primary" onclick="window.open('https://recruit.hd.com/kr','_blank')">HD현대중공업 지원하기</button>
+          <button class="btn secondary" onclick="location.href='view.html'">인턴십 이야기 보러가기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({duration:800,once:true});
+    function toggleMenu(){document.getElementById('menuPopup').classList.toggle('active');}
+    window.addEventListener('click',e=>{const m=document.getElementById('menuPopup'),i=document.querySelector('.menu-icon');if(!m.contains(e.target)&&!i.contains(e.target))m.classList.remove('active');});
+    window.addEventListener('load',()=>setTimeout(()=>{document.getElementById('splash').style.display='none';document.body.classList.add('loaded');},800));
+
+    const modal=document.getElementById('alModal'),
+          startBtn=document.getElementById('startBtn'),
+          closeBtn=document.querySelector('.close-modal'),
+          steps={question:document.getElementById('stepQuestion'),analysis:document.getElementById('stepAnalysis'),result:document.getElementById('stepResult')};
+
+    const questions=[
+      {text:'둘중 하나 골라야 한다면?',opt1:'밤 12시까지 야근하기',dim1:'responsibility',opt2:'밤 12시까지 회식하기',dim2:'teamwork'},
+      {text:'오늘 안에 해야하는 일이 주어진다면?',opt1:'혼자 작업 다하기',dim1:'analytical',opt2:'팀과 나눠서하기',dim2:'teamwork'},
+      {text:'신입사원으로서 보고를 준비 중이라면?',opt1:'꼼꼼하게 데이터 분석하기',dim1:'analytical',opt2:'창의적인 아이디어 제시하기',dim2:'creativity'},
+      {text:'아직은 애매한 도전을 앞두고 있다면?',opt1:'현행유지하고 오랜 검토',dim1:'responsibility',opt2:'혁신적인 도전으로 실행',dim2:'innovation'},
+      {text:'긴급 기획 요청을 받았다면?',opt1:'체계적인 계획부터 빠르게',dim1:'responsibility',opt2:'일단 즉흥적인 실행',dim2:'creativity'},
+      {text:'고객 미팅을 앞두고 있을때 당신은?',opt1:'철저한 요구사항 분석',dim1:'creativity',opt2:'최신 시장 탐색 먼저',dim2:'innovation'},
+      {text:'문제가 발생하였을때',opt1:'근본 원인 분석',dim1:'analytical',opt2:'임시 조치 먼저',dim2:'innovation'},
+      {text:'신기술 도입 검토?',opt1:'신기술 학습 추진',dim1:'innovation',opt2:'기존 방식 강화부터',dim2:'responsibility'},
+      {text:'내용 전달이 필요할때?',opt1:'문서로 정리해서 전달',dim1:'teamwork',opt2:'만나서 직접 소통',dim2:'teamwork'},
+      {text:'발표자료는 이것이 중요하다',opt1:'자세한 설명이 중요',dim1:'teamwork',opt2:'간결한 요약이 중요',dim2:'creativity'},
+      {text:'장기 프로젝트 계획이라면?',opt1:'장기 전략으로 큰그림',dim1:'creativity',opt2:'단기 목표부터 차근차근',dim2:'responsibility'},
+      {text:'문제를 해결해야 할때?',opt1:'정확하게 해결한다',dim1:'responsibility',opt2:'빠르게 해결한다',dim2:'analytical'},
+      {text:'궁금한게 생겼을 때',opt1:'사무실에서 내용 학습',dim1:'analytical',opt2:'현장에 직접가서 물어보기',dim2:'creativity'},
+      {text:'팀 성과와 나의 성과중에 골라야 한다면?',opt1:'팀 성과가 중요',dim1:'teamwork',opt2:'개인 성과가 중요',dim2:'responsibility'},
+      {text:'약간의 리스크가 있는 업무 상황에서?',opt1:'실패없게 리스크 관리',dim1:'teamwork',opt2:'과감한 시도후 개선',dim2:'innovation'},
+      {text:'시간이 없을때?',opt1:'남은 시간이라도 철저하게 계획',dim1:'analytical',opt2:'임시 대응후 경과보기',dim2:'innovation'},
+      {text:'회의 자료 준비할때?',opt1:'디테일이 중요',dim1:'analytical',opt2:'큰 그림이 중요',dim2:'innovation'},
+      {text:'고객 피드백에 대응해야 할때?',opt1:'분석을 기반하여 대응',dim1:'analytical',opt2:'창의적으로 대응',dim2:'creativity'},
+      {text:'새 시스템 도입 상황이라면?',opt1:'표준 절차 완벽준수',dim1:'responsibility',opt2:'유연한 시스템',dim2:'innovation'},
+      {text:'팀끼리 문화 활동을 할때?',opt1:'다같이 여행가기',dim1:'teamwork',opt2:'영화 보러 가기',dim2:'creativity'}
+    ];
+
+   const jobs = [
+  {"department": "엔진기계사업부", "role": "영업", "desc": "친환경 선박 엔진이나 발전용 엔진 시스템을 조선소나 선주에게 소개하고, 고객의 요구에 맞는 기술적인 설명과 계약을 진행합니다. 국내외 고객과의 협의를 통해 프로젝트를 수주하고, 엔진 마케팅 전략을 수립하는 역할도 함께 수행합니다.", "weights": {"responsibility": 3, "analytical": 2, "creativity": 3, "teamwork": 1, "innovation": 1}},
+  {"department": "엔진기계사업부", "role": "상세설계", "desc": "선박용 엔진의 기계 부품이나 시스템을 개발하고, 이를 3D 모델로 설계하여 실제로 제작할 수 있도록 도면을 작성합니다. 개발된 제품이 양산될 수 있도록 기술 지원을 하며, 제어시스템까지 포함한 설계·개발 업무를 수행합니다.", "weights": {"responsibility": 2, "analytical": 2, "creativity": 3, "teamwork": 1, "innovation": 2}},
+  {"department": "엔진기계사업부", "role": "생산관리", "desc": "대형 또는 중형 선박 엔진이 원활히 생산될 수 있도록 부품 조달, 조립 일정, 품질 검사, 성능 시험 등 생산 전 과정을 관리하고 지원합니다. 공장에서 발생하는 데이터를 분석하고, 생산 장비나 공정을 개선하는 일도 담당합니다.", "weights": {"responsibility": 2, "analytical": 2, "creativity": 3, "teamwork": 2, "innovation": 1}},
+  {"department": "엔진기계사업부", "role": "생산지원", "desc": "사업부 전체의 운영 전략을 수립하고, 제품 입출고 및 일정 등을 체계적으로 관리합니다. 주요 제품의 생산계획을 수립하고 이를 실적과 비교하며, 공정 개선이나 업무 방식 효율화를 위한 프로젝트도 진행합니다.", "weights": {"responsibility": 2, "analytical": 2, "creativity": 4, "teamwork": 1, "innovation": 1}},
+  {"department": "조선사업부", "role": "기본설계", "desc": "기본설계는 선박의 전체적인 설계 방향을 수립하고, 계약을 위한 기술 사양서를 작성하며, 선주 및 고객과의 기술 미팅을 통해 설계 요건을 협의하고 반영하는 역할을 합니다. 주요 구조와 시스템 설계를 포함하여 선박 설계의 기초를 다집니다.", "weights": {"responsibility": 2, "analytical": 3, "creativity": 3, "teamwork": 1, "innovation": 1}},
+  {"department": "조선사업부", "role": "조선설계", "desc": "조선설계는 선박 건조를 위한 구조 해석, 중량 검토, 도면 작성 등을 수행하며, 설계 기준을 생산성과 연계하여 실질적인 제작 도면으로 전환합니다. 설계 시스템을 개발하거나 개선하여 생산 효율을 높이는 업무도 포함됩니다.", "weights": {"responsibility": 3, "analytical": 1, "creativity": 3, "teamwork": 1, "innovation": 2}},
+  {"department": "조선사업부", "role": "생산관리", "desc": "생산관리 직무는 선박 건조를 위한 작업 표준 수립과 작업자 관리, 공정·자재·설비의 투입 및 품질 관리를 수행합니다. 또한 안전환경 기준을 마련해 재해를 예방하고, 해외 선주 및 감독관과의 공정 이슈를 조율합니다.", "weights": {"responsibility": 3, "analytical": 1, "creativity": 3, "teamwork": 2, "innovation": 1}},
+  {"department": "해양사업부", "role": "상세설계", "desc": "상세설계는 도면, 구매사양서, 절차서 등의 설계 문서를 작성하고, 고객이 요구하는 기술 명세(SPEC)를 반영하여 제품의 설계 완성도를 높이는 역할을 합니다. 기술 지원 및 협의 대응도 함께 수행합니다.", "weights": {"responsibility": 3, "analytical": 1, "creativity": 4, "teamwork": 1, "innovation": 1}},
+  {"department": "특수선사업부", "role": "상세설계", "desc": "특수선 상세설계는 군함, 특수 목적 선박에 대한 도면 작성과 설계 문서 작성을 담당합니다. 기술적 정합성과 기능 요건을 충족시키기 위해 고객과 긴밀하게 협의하며, 높은 정확도의 설계를 제공합니다.", "weights": {"responsibility": 3, "analytical": 2, "creativity": 2, "teamwork": 1, "innovation": 2}},
+  {"department": "특수선사업부", "role": "영업", "desc": "특수선 영업은 함정 및 방산 관련 사업 수주, 해외시장 대응 및 제안 활동을 수행하며, 마케팅 자료 제작과 입찰 전략 수립도 함께 진행합니다.", "weights": {"responsibility": 3, "analytical": 2, "creativity": 3, "teamwork": 0, "innovation": 2}},
+  {"department": "범경영", "role": "상생", "desc": "상생 직무는 노사 간 협력을 위한 정책 기획, 노사협의회 운영, 교육 및 조직문화 개선 활동을 통해 지속 가능한 노사관계를 구축합니다.", "weights": {"responsibility": 3, "analytical": 2, "creativity": 3, "teamwork": 2, "innovation": 0}},
+  {"department": "범경영", "role": "IT보안", "desc": "IT보안 직무는 사내 정보시스템을 외부 위협으로부터 보호하기 위한 정책 수립과 시스템 운영을 통해 사이버 보안을 강화합니다.", "weights": {"responsibility": 3, "analytical": 2, "creativity": 4, "teamwork": 0, "innovation": 1}},
+  {"department": "범경영", "role": "대외협력", "desc": "대외협력은 부동산, 공장, 설비 등의 자산 기획 및 법적 대응을 비롯해, 각종 인허가 및 외부 유관기관과의 협업을 총괄합니다.", "weights": {"responsibility": 3, "analytical": 2, "creativity": 4, "teamwork": 1, "innovation": 0}},
+  {"department": "범경영", "role": "구매", "desc": "구매 직무는 부품 및 자재의 계약, 공급업체 선정, 공급망 ESG 리스크 관리 등을 포함한 회사의 전반적인 구매 프로세스를 운영합니다.", "weights": {"responsibility": 3, "analytical": 3, "creativity": 2, "teamwork": 1, "innovation": 1}},
+  {"department": "범경영", "role": "자산", "desc": "자산 직무는 고정자산 회계 처리, 공장·설비 자산의 기획 및 운영 전략 수립, 에너지효율 개선 활동 등을 수행합니다.", "weights": {"responsibility": 3, "analytical": 3, "creativity": 3, "teamwork": 0, "innovation": 1}},
+  {"department": "범경영", "role": "DT", "desc": "DT 직무는 사내 업무를 디지털화하기 위한 플랫폼 및 시스템을 기획·운영하고, 스마트팩토리와 연계된 디지털 전환을 추진합니다.", "weights": {"responsibility": 3, "analytical": 3, "creativity": 3, "teamwork": 1, "innovation": 0}},
+  {"department": "범경영", "role": "재경", "desc": "재경 직무는 예산 수립, 실적 분석, 세무 계획 수립, 내부 회계 관리 등 기업 재무와 회계의 핵심 업무를 담당합니다.", "weights": {"responsibility": 4, "analytical": 1, "creativity": 3, "teamwork": 1, "innovation": 1}}
+];
+
+
+
+
+
+
+    let selected=[], current=0, answers=[];
+
+    startBtn.onclick=()=>{
+      selected=questions.sort(()=>Math.random()-0.5).slice(0,10);
+      current=0; answers=[];
+      updateQuestion();
+      modal.classList.add('active');
+    };
+    closeBtn.onclick=()=>modal.classList.remove('active');
+    document.getElementById('ans1Btn').onclick=()=>selectAnswer(0);
+    document.getElementById('ans2Btn').onclick=()=>selectAnswer(1);
+
+    function selectAnswer(choice){
+      answers[current]=choice;
+      document.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected'));
+      document.getElementById(choice===0?'ans1Btn':'ans2Btn').classList.add('selected');
+      setTimeout(()=>{
+        if(current<9){current++;updateQuestion();}
+        else showAnalysis();
+      },300);
+    }
+    function updateQuestion(){
+      showStep('question');
+      document.querySelector('.question-number').innerText=`${current+1}/10`;
+      document.getElementById('progressBar').style.width=`${(current+1)/10*100}%`;
+      document.getElementById('questionText').innerText=selected[current].text;
+      document.getElementById('ans1Btn').innerText=selected[current].opt1;
+      document.getElementById('ans2Btn').innerText=selected[current].opt2;
+    }
+    function showStep(name){
+      Object.values(steps).forEach(s=>s.classList.remove('active'));
+      steps[name].classList.add('active');
+    }
+    function showAnalysis(){
+      showStep('analysis');
+      setTimeout(showResult,2000+Math.random()*2000);
+    }
+    function showResult(){
+      showStep('result');
+      // 1) 비율 계산
+      const counts={}, proportions={};
+      selected.forEach((q,i)=>{
+        const d=answers[i]===0?q.dim1:q.dim2;
+        counts[d]=(counts[d]||0)+1;
+      });
+      for(const [d,c] of Object.entries(counts)) proportions[d]=c/answers.length;
+      // 2) 직무 점수
+      const jobScores=jobs.map(j=>{
+        const W=Object.values(j.weights).reduce((a,b)=>a+b,0);
+        const s=Object.entries(j.weights).reduce((sum,[dim,w])=>sum+(proportions[dim]||0)*w,0)/W;
+        return {...j,score:s};
+      });
+      // 3) 부서 합산
+      const deptSum={};
+      jobScores.forEach(j=>deptSum[j.department]=(deptSum[j.department]||0)+j.score);
+      // 4) 부서 가중 랜덤 선택
+      const depts=Object.entries(deptSum);
+      const totalDept=depts.reduce((a,[,s])=>a+s,0);
+      let r=Math.random()*totalDept;
+      const chosenDept=depts.find(([_,s])=>{if(r<s)return true; r-=s; return false; })[0];
+      // 5) 부서 내 후보
+      const candidates=jobScores.filter(j=>j.department===chosenDept);
+      // 6) 직무 가중 랜덤 선택
+      const totalJob=candidates.reduce((a,j)=>a+j.score,0);
+      let r2=Math.random()*totalJob;
+      const best=candidates.find(j=>{if(r2<j.score)return true; r2-=j.score; return false;});
+      // 7) 렌더링
+      const colorMap={
+        '엔진기계사업부':'linear-gradient(135deg,#00B3FF,#9932CC)',
+        '조선사업부':'linear-gradient(135deg,#008233,#003087)',
+        '해양사업부':'linear-gradient(135deg,#9932CC,#00B3FF)',
+        '해양에너지':'linear-gradient(135deg,#008233,#9932CC)',
+        '특수선사업부':'linear-gradient(135deg,#003087,#008233)'
+      };
+      const gradient=colorMap[best.department]||colorMap['엔진기계사업부'];
+      const card=document.getElementById('resultCard');
+      card.style.background=gradient;
+      card.innerHTML=`
+        <div class="result-department">${best.department}</div>
+        <div class="result-role">${best.role} 직무</div>
+        <p class="result-desc">${best.desc}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
