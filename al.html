@@ -71,10 +71,32 @@
     }
 
     /* Intro */
-    .al-intro{padding:5rem 1rem;text-align:center;}
-    .al-intro .page-title{font-family:'HDHyundaiBold';font-size:2rem;background:linear-gradient(90deg,#00B3FF,#9932CC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem;}
-    .al-intro .subtitle,.al-intro .tagline{font-size:1rem;margin-bottom:1.5rem;}
-    /* Buttons */
+    .al-intro {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 5rem; /* 상단바 높이 만큼 확보 */
+  padding-bottom: 3rem;
+}
+
+.al-intro .page-title {
+  font-family: 'HDHyundaiBold';
+  font-size: 2rem;
+  background: linear-gradient(90deg, #00B3FF, #9932CC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: .5rem;
+}
+
+.al-intro .subtitle,
+.al-intro .tagline {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+ /* Buttons */
     .btn{padding:1rem 2rem;border:none;border-radius:8px;font-family:'HDHyundaiBold';font-size:1.1rem;color:#fff;cursor:pointer;display:block;margin:0 auto;transition:transform .2s,box-shadow .2s;}
     .btn:hover{transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,0.1);}
     .btn.primary{background:var(--discovery-blue);}
