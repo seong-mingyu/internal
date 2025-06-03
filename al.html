@@ -2,72 +2,22 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Intern Al - H-int</title>
   <link rel="icon" href="assets/images/logo.png" type="image/png"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
-    @font-face {
-      font-family: 'HDHyundaiLight';
-      src: url('assets/fonts/HDHyundai-Light.ttf') format('truetype');
-    }
-    @font-face {
-      font-family: 'HDHyundaiBold';
-      src: url('assets/fonts/HDHyundai-Bold.ttf') format('truetype');
-    }
-    :root {
-      --discovery-blue: #003087;
-      --prosperity-green: #008233;
-      --trust-blue: #002554;
-      --gray-text: #63666A;
-      --bg-light: #f4f4f4;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'HDHyundaiLight', sans-serif;
-      background: var(--bg-light);
-      color: var(--gray-text);
-      opacity: 0;
-      transition: opacity .6s;
-    }
-    body.loaded {
-      opacity: 1;
-    }
-
+    @font-face{font-family:'HDHyundaiLight';src:url('assets/fonts/HDHyundai-Light.ttf') format('truetype')}
+    @font-face{font-family:'HDHyundaiBold';src:url('assets/fonts/HDHyundai-Bold.ttf') format('truetype')}
+    :root{--discovery-blue:#003087;--prosperity-green:#008233;--trust-blue:#002554;--gray-text:#63666A;--bg-light:#f4f4f4}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'HDHyundaiLight',sans-serif;background:var(--bg-light);color:var(--gray-text);opacity:0;transition:opacity .6s;}
+    body.loaded{opacity:1;}
     /* Splash */
-    #splash {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      animation: fadeSplash .8s ease forwards;
-    }
-    #splash img {
-      width: 60px;
-      margin-bottom: 1rem;
-    }
-    .splash-text {
-      font-family: 'HDHyundaiBold';
-      font-size: 1.5rem;
-      color: var(--discovery-blue);
-    }
-    @keyframes fadeSplash {
-      0% {opacity: 1;}
-      99% {opacity: 0;}
-      100% {display: none;}
-    }
+    #splash{position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;animation:fadeSplash .8s ease forwards;}
+    #splash img{width:60px;margin-bottom:1rem;}
+    .splash-text{font-family:'HDHyundaiBold';font-size:1.5rem;color:var(--discovery-blue);}
+    @keyframes fadeSplash{0%{opacity:1;}99%{opacity:0;}100%{display:none;}}
 
     /* 상단바 */
     .header {
@@ -107,116 +57,90 @@
       font-weight: bold;
     }
 
-    /* 페이지 인트로 */
-    .al-intro {
-      padding: 6rem 1rem 3rem; /* 상단바 높이 + 여유 */
-      text-align: center;
-    }
-    .al-intro .page-title {
-      font-family: 'HDHyundaiBold';
-      font-size: 2rem;
-      background: linear-gradient(90deg,#00B3FF,#9932CC);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: .5rem;
-    }
-    .al-intro .subtitle, .al-intro .tagline {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-    }
+    /* Intro */
+    .al-intro{padding:3rem 1rem;text-align:center;}
+    .al-intro .page-title{font-family:'HDHyundaiBold';font-size:2rem;background:linear-gradient(90deg,#00B3FF,#9932CC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem;}
+    .al-intro .subtitle,.al-intro .tagline{font-size:1rem;margin-bottom:1.5rem;}
+    /* Buttons */
+    .btn{padding:1rem 2rem;border:none;border-radius:8px;font-family:'HDHyundaiBold';font-size:1.1rem;color:#fff;cursor:pointer;display:block;margin:0 auto;transition:transform .2s,box-shadow .2s;}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,0.1);}
+    .btn.primary{background:var(--discovery-blue);}
+    .btn.secondary{background:var(--prosperity-green);}
+    
+    /* Modal */
+    .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;padding:1rem;z-index:10000;}
+    .modal.active{display:flex;}
+    .modal-content{background:#fff;border-radius:12px;width:90%;max-width:480px;max-height:120vh;padding:2rem;position:relative;display:flex;flex-direction:column;overflow:auto;animation:fadeInDown .4s ease-out;}
+    @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+    .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;}
+    .modal-header .title{font-family:'HDHyundaiBold';font-size:1.8rem;background:linear-gradient(90deg,#00B3FF,#9932CC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .close-modal{background:transparent;border:none;font-size:1.5rem;color:var(--gray-text);cursor:pointer;}
+    /* Question */
+    .step{display:none;}
+    .step.active{display:block;}
+    .question-card{background:#f9f9f9;border-radius:12px;padding:1.5rem;margin-bottom:2rem;}
+    .question-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;}
+    .question-number{font-family:'HDHyundaiBold';font-size:1rem;}
+    .progress{flex:1;height:8px;background:#eee;border-radius:4px;overflow:hidden;margin-left:1rem;}
+    .progress-bar{height:100%;width:0%;background:var(--discovery-blue);transition:width .3s;}
+    .question-text {
+  font-size: 1.5rem;                 /* 기존보다 조금 더 크게 */
+  line-height: 1.6;
+  text-align: left;
+  font-family: 'HDHyundaiBold';       /* bold체 적용 */
+  margin-bottom: 2rem;                /* 버튼과의 간격 확보 */
+}
 
-    /* 버튼 */
-    .btn {
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 8px;
-      font-family: 'HDHyundaiBold';
-      font-size: 1.1rem;
-      color: #fff;
-      cursor: pointer;
-      display: block;
-      margin: 0 auto;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .btn.primary {
-      background: var(--discovery-blue);
-    }
-    .btn.secondary {
-      background: var(--prosperity-green);
-    }
+    .question-options {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;  /* 여기 중요: 버튼 높이를 강제로 맞춤 */
+}
 
-    /* 모달 */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      z-index: 10000;
-    }
-    .modal.active {
-      display: flex;
-    }
-    .modal-content {
-      background: #fff;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 480px;
-      max-height: 120vh;
-      padding: 2rem;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      overflow: auto;
-      animation: fadeInDown .4s ease-out;
-    }
-    @keyframes fadeInDown {
-      from {opacity: 0; transform: translateY(-20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-    .modal-header .title {
-      font-family: 'HDHyundaiBold';
-      font-size: 1.8rem;
-      background: linear-gradient(90deg,#00B3FF,#9932CC);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .close-modal {
-      background: transparent;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--gray-text);
-      cursor: pointer;
-    }
+    .option-btn {
+  flex: 1 1 calc(50% - 0.5rem);
+  padding: 1rem;
+  min-height: 100px;               /* 고정된 최소 높이 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #fff;
+  border: 2px solid var(--bg-light);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
 
-    /* 모바일 튜닝 */
-    @media (max-width: 480px) {
-      .modal-content {
-        padding: 1rem;
-      }
-      .btn {
-        font-size: .95rem;
-        padding: .75rem 1.25rem;
-      }
-      .al-intro .page-title {
-        font-size: 1.5rem;
-      }
-    }
+  white-space: normal;             /* 줄바꿈 허용 */
+  word-break: keep-all;            /* 단어 중간에서 끊기지 않음 (한글 가독성 ↑) */
+}
+
+
+ .option-btn:hover{border-color:var(--discovery-blue);transform:scale(1.02);}
+    .option-btn.selected{background:var(--discovery-blue);color:#fff;}
+    .vs-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'HDHyundaiBold';
+  font-size: 1.5rem;
+  color: var(--trust-blue);
+  padding: 0 0.5rem;
+  min-width: 40px;  /* 너무 좁게 붙지 않도록 넓이 여유 */
+}
+    /* Loading */
+    .loading-indicator{width:50px;height:50px;margin:3rem auto;border:5px solid var(--prosperity-green);border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+    /* Result */
+    .result-card{border-radius:12px;padding:2.5rem;text-align:center;margin-bottom:1.5rem;color:#fff;animation:fadeIn .5s ease-out;}
+    .result-department{font-size:1.2rem;opacity:0.9;margin-bottom:.5rem;}
+    .result-role{font-size:1.5rem;font-weight:bold;margin-bottom:1rem;}
+    .result-desc{font-size:1rem;line-height:1.5;text-align:center;}
+    .result-buttons{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:2rem;}
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+    /* Mobile tweaks */
+    @media(max-width:480px){.modal-content{padding:1rem;}.btn{font-size:.95rem;padding:.75rem 1.25rem;}.question-text{font-size:1rem;}.option-btn{font-size:1rem;padding:1rem;}}
   </style>
 </head>
 <body>
@@ -241,7 +165,6 @@
     <button id="startBtn" class="btn primary">테스트 시작하기</button>
   </div>
 
-  <!-- 모달 -->
   <div id="alModal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -252,9 +175,7 @@
         <div class="question-card">
           <div class="question-header">
             <div class="question-number">1/10</div>
-            <div class="progress">
-              <div id="progressBar" class="progress-bar"></div>
-            </div>
+            <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
           </div>
           <p id="questionText" class="question-text"></p>
           <div class="question-options">
